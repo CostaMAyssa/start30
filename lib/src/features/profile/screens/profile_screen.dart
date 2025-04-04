@@ -75,11 +75,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         elevation: 0,
-        title: const Text(
-          'Painel do Projeto',
-          style: TextStyle(
+        title: Text(
+          'Dashboard do Projeto',
+          style: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.bold,
+            fontSize: 20,
           ),
         ),
         actions: [
@@ -93,251 +94,301 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: horizontalPadding,
-            vertical: isMobile ? 24 : 40,
-          ),
-          child: Center(
+      body: Stack(
+        children: [
+          // Elementos decorativos de fundo
+          Positioned(
+            top: -screenSize.height * 0.2,
+            right: -screenSize.width * 0.2,
             child: Container(
-              constraints: BoxConstraints(maxWidth: maxWidth),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Informações do projeto
-                  Container(
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xFF1A1A1A),
-                          Color(0xFF111111),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Foto do projeto
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Container(
-                                width: isMobile ? 60 : 100,
-                                height: isMobile ? 60 : 100,
-                                color: AppColors.secondary,
-                                child: Center(
-                                  child: Text(
-                                    'GP',
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: isMobile ? 20 : 32,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 20),
-                            // Detalhes do projeto
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Green Planet App',
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: isMobile ? 20 : 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    'Aplicativo para monitoramento ambiental',
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white70,
-                                      fontSize: isMobile ? 14 : 16,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'Status: Em desenvolvimento',
-                                    style: GoogleFonts.poppins(
-                                      color: AppColors.secondary,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: isMobile ? 14 : 16,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24),
-                        // Progresso geral
-                        Text(
-                          'Progresso Geral: 42%',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: LinearProgressIndicator(
-                            value: 0.42,
-                            minHeight: 8,
-                            backgroundColor: Colors.white10,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              AppColors.secondary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  
-                  const SizedBox(height: 32),
-                  
-                  // Estatísticas
-                  Wrap(
-                    spacing: 16,
-                    runSpacing: 16,
-                    children: [
-                      _buildStatCard(
-                        isMobile: isMobile,
-                        icon: Icons.calendar_today,
-                        title: '$_daysRemaining',
-                        subtitle: 'Dias Restantes',
-                        color: const Color(0xFF2E90FA),
-                      ),
-                      _buildStatCard(
-                        isMobile: isMobile,
-                        icon: Icons.check_circle_outline,
-                        title: '$_tasksCompleted/$_totalTasks',
-                        subtitle: 'Tarefas Concluídas',
-                        color: const Color(0xFF00BA88),
-                      ),
-                      _buildStatCard(
-                        isMobile: isMobile,
-                        icon: Icons.schedule,
-                        title: '2',
-                        subtitle: 'Reuniões Agendadas',
-                        color: AppColors.secondary,
-                      ),
-                    ],
-                  ),
-                  
-                  const SizedBox(height: 32),
-                  
-                  // Etapas do projeto
-                  Text(
-                    'Acompanhamento do Desenvolvimento',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: isMobile ? 18 : 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: _stages.length,
-                    separatorBuilder: (context, index) => const SizedBox(height: 16),
-                    itemBuilder: (context, index) {
-                      return _buildStageCard(_stages[index], isMobile);
-                    },
-                  ),
-                  
-                  const SizedBox(height: 32),
-                  
-                  // Contato do Gerente de Projeto
-                  Container(
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF111111),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.white10),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Seu Gerente de Projeto',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 24,
-                              backgroundColor: AppColors.secondary.withOpacity(0.2),
-                              child: Text(
-                                'AF',
-                                style: GoogleFonts.poppins(
-                                  color: AppColors.secondary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Amanda Ferreira',
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Text(
-                                    'amanda@start30.com',
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white70,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            ElevatedButton.icon(
-                              onPressed: () {},
-                              icon: const Icon(Icons.chat_outlined, size: 18),
-                              label: const Text('Conversar'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.secondary,
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              width: screenSize.width * 0.6,
+              height: screenSize.width * 0.6,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    AppColors.secondary.withOpacity(0.15),
+                    AppColors.secondary.withOpacity(0),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
+          
+          Positioned(
+            bottom: -screenSize.height * 0.15,
+            left: -screenSize.width * 0.15,
+            child: Container(
+              width: screenSize.width * 0.5,
+              height: screenSize.width * 0.5,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.03),
+                    Colors.white.withOpacity(0),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          
+          // Linhas decorativas sutis
+          for (int i = 0; i < 5; i++)
+            Positioned(
+              top: screenSize.height * (i * 0.2),
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 1,
+                color: Colors.white.withOpacity(0.03),
+              ),
+            ),
+          
+          // Conteúdo principal
+          SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: horizontalPadding,
+                vertical: isMobile ? 24 : 40,
+              ),
+              child: Center(
+                child: Container(
+                  constraints: BoxConstraints(maxWidth: maxWidth),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Informações do projeto
+                      Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.white.withOpacity(0.1)),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Foto do projeto
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Container(
+                                    width: isMobile ? 60 : 100,
+                                    height: isMobile ? 60 : 100,
+                                    color: AppColors.secondary,
+                                    child: Center(
+                                      child: Text(
+                                        'GP',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: isMobile ? 20 : 32,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                                // Detalhes do projeto
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Green Planet App',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: isMobile ? 20 : 24,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        'Aplicativo para monitoramento ambiental',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white70,
+                                          fontSize: isMobile ? 14 : 16,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 16),
+                                      Text(
+                                        'Status: Em desenvolvimento',
+                                        style: GoogleFonts.poppins(
+                                          color: AppColors.secondary,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: isMobile ? 14 : 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 24),
+                            // Progresso geral
+                            Text(
+                              'Progresso Geral: 42%',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: LinearProgressIndicator(
+                                value: 0.42,
+                                minHeight: 10,
+                                backgroundColor: Colors.white.withOpacity(0.1),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  AppColors.secondary,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      
+                      const SizedBox(height: 32),
+                      
+                      // Estatísticas
+                      Wrap(
+                        spacing: 16,
+                        runSpacing: 16,
+                        children: [
+                          _buildStatCard(
+                            isMobile: isMobile,
+                            icon: Icons.calendar_today,
+                            title: '$_daysRemaining',
+                            subtitle: 'Dias Restantes',
+                            color: const Color(0xFF2E90FA),
+                          ),
+                          _buildStatCard(
+                            isMobile: isMobile,
+                            icon: Icons.check_circle_outline,
+                            title: '$_tasksCompleted/$_totalTasks',
+                            subtitle: 'Tarefas Concluídas',
+                            color: const Color(0xFF00BA88),
+                          ),
+                          _buildStatCard(
+                            isMobile: isMobile,
+                            icon: Icons.schedule,
+                            title: '2',
+                            subtitle: 'Reuniões Agendadas',
+                            color: AppColors.secondary,
+                          ),
+                        ],
+                      ),
+                      
+                      const SizedBox(height: 32),
+                      
+                      // Etapas do projeto
+                      Text(
+                        'Acompanhamento do Desenvolvimento',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: isMobile ? 18 : 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: _stages.length,
+                        separatorBuilder: (context, index) => const SizedBox(height: 16),
+                        itemBuilder: (context, index) {
+                          return _buildStageCard(_stages[index], isMobile);
+                        },
+                      ),
+                      
+                      const SizedBox(height: 32),
+                      
+                      // Contato do Gerente de Projeto
+                      Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.white.withOpacity(0.1)),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Seu Gerente de Projeto',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 24,
+                                  backgroundColor: AppColors.secondary.withOpacity(0.2),
+                                  child: Text(
+                                    'AF',
+                                    style: GoogleFonts.poppins(
+                                      color: AppColors.secondary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Amanda Ferreira',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Text(
+                                        'amanda@start30.com',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white70,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.chat_outlined, size: 18),
+                                  label: const Text('Conversar'),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.secondary,
+                                    foregroundColor: Colors.white,
+                                    elevation: 0,
+                                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -353,9 +404,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       width: isMobile ? double.infinity : 240,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF111111),
+        color: Colors.black.withOpacity(0.7),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white10),
+        border: Border.all(color: Colors.white.withOpacity(0.1)),
       ),
       child: Row(
         children: [
@@ -363,7 +414,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withOpacity(0.15),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
@@ -412,9 +463,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF111111),
+        color: Colors.black.withOpacity(0.7),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white10),
+        border: Border.all(color: Colors.white.withOpacity(0.1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -487,11 +538,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Expanded(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(8),
                   child: LinearProgressIndicator(
                     value: stage.progress / 100,
-                    minHeight: 8,
-                    backgroundColor: Colors.white10,
+                    minHeight: 10,
+                    backgroundColor: Colors.white.withOpacity(0.1),
                     valueColor: AlwaysStoppedAnimation<Color>(
                       stage.progress == 100 ? AppColors.success : AppColors.secondary,
                     ),

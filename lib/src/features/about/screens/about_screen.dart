@@ -41,6 +41,14 @@ class AboutScreen extends StatelessWidget {
                     const Color(0xFF000000),
                   ],
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 20,
+                    spreadRadius: 5,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
               ),
               child: Stack(
                 children: [
@@ -79,6 +87,52 @@ class AboutScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Linhas decorativas
+                  Positioned(
+                    top: screenSize.height * 0.1,
+                    left: 0,
+                    child: Container(
+                      width: screenSize.width,
+                      height: 1,
+                      color: Colors.white.withOpacity(0.03),
+                    ),
+                  ),
+                  Positioned(
+                    top: screenSize.height * 0.3,
+                    left: 0,
+                    child: Container(
+                      width: screenSize.width,
+                      height: 1,
+                      color: Colors.white.withOpacity(0.03),
+                    ),
+                  ),
+                  // Pontos de luz
+                  if (!isMobile) ...[
+                    Positioned(
+                      top: screenSize.height * 0.15,
+                      left: screenSize.width * 0.2,
+                      child: Container(
+                        width: 4,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withOpacity(0.4),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: screenSize.height * 0.25,
+                      right: screenSize.width * 0.25,
+                      child: Container(
+                        width: 6,
+                        height: 6,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.secondary.withOpacity(0.4),
+                        ),
+                      ),
+                    ),
+                  ],
                   // Conteúdo principal
                   Center(
                     child: Container(
@@ -92,24 +146,56 @@ class AboutScreen extends StatelessWidget {
                             'Nossa História',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
-                              fontSize: isMobile ? 40 : 72,
+                              fontSize: isMobile ? 42 : 76,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              foreground: Paint()
+                                ..shader = LinearGradient(
+                                  colors: [
+                                    Colors.white,
+                                    Colors.white.withOpacity(0.8),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
                               height: 1.1,
-                              letterSpacing: -1,
+                              letterSpacing: -1.2,
+                              shadows: [
+                                Shadow(
+                                  blurRadius: 10.0,
+                                  color: Colors.black.withOpacity(0.3),
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Container(
+                            width: isMobile ? 120 : 180,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  AppColors.secondary.withOpacity(0.5),
+                                  AppColors.secondary,
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(2),
                             ),
                           ),
                           const SizedBox(height: 24),
                           Container(
                             constraints: BoxConstraints(maxWidth: 800),
                             child: Text(
-                              'Conheça a jornada que nos trouxe até aqui e nossa missão de transformar ideias em negócios digitais de sucesso.',
+                              'Conheça a jornada que moldou nossa missão de transformar ideias em negócios digitais de sucesso.',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 fontSize: isMobile ? 16 : 20,
-                                color: Colors.white.withOpacity(0.8),
-                                height: 1.5,
-                                letterSpacing: 0.2,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white.withOpacity(0.85),
+                                height: 1.6,
+                                letterSpacing: 0.3,
                               ),
                             ),
                           ),
@@ -535,14 +621,7 @@ class AboutScreen extends StatelessWidget {
       width: isMobile ? double.infinity : 330,
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Colors.white.withOpacity(0.05),
-            Colors.white.withOpacity(0.02),
-          ],
-        ),
+        color: Colors.black.withOpacity(0.3),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: Colors.white.withOpacity(0.1)),
         boxShadow: [
@@ -581,6 +660,23 @@ class AboutScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
+          // Label de valor para corresponder ao design dos cards de jornada
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Text(
+              'Valor',
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: gradientColors[0],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
           Text(
             title,
             style: GoogleFonts.poppins(
