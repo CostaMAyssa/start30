@@ -83,9 +83,10 @@ class HomeScreen extends StatelessWidget {
             // Hero Section
             Container(
               width: double.infinity,
+              height: screenSize.height,
               padding: EdgeInsets.symmetric(
                 horizontal: isMobile ? 16 : 40,
-                vertical: isMobile ? 60 : 120,
+                vertical: 0,
               ),
               decoration: BoxDecoration(
                 color: const Color(0xFF080808),
@@ -104,8 +105,8 @@ class HomeScreen extends StatelessWidget {
                     right: isMobile ? -100 : 0,
                     top: isMobile ? -50 : 50,
                     child: Container(
-                      width: isMobile ? 200 : 400,
-                      height: isMobile ? 200 : 400,
+                      width: isMobile ? 200 : 500,
+                      height: isMobile ? 200 : 500,
                       decoration: BoxDecoration(
                         gradient: RadialGradient(
                           colors: [
@@ -122,8 +123,8 @@ class HomeScreen extends StatelessWidget {
                     left: isMobile ? -150 : -100,
                     bottom: isMobile ? -100 : -50,
                     child: Container(
-                      width: isMobile ? 250 : 350,
-                      height: isMobile ? 250 : 350,
+                      width: isMobile ? 250 : 450,
+                      height: isMobile ? 250 : 450,
                       decoration: BoxDecoration(
                         gradient: RadialGradient(
                           colors: [
@@ -138,34 +139,35 @@ class HomeScreen extends StatelessWidget {
                   // Conteúdo principal
                   isMobile
                       ? Align(
-                          alignment: Alignment.centerLeft,
+                          alignment: Alignment.center,
                           child: Container(
                             width: double.infinity,
                             constraints: BoxConstraints(maxWidth: maxWidth),
                             padding: EdgeInsets.only(left: 0),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // Subtítulo com mais refinamento tipográfico
                                 Text(
                                   'TRANSFORMANDO IDEIAS',
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 11,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white.withOpacity(0.75),
                                     letterSpacing: 2.0,
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                SizedBox(height: 16),
                                 
                                 // Título principal com tipografia mais elegante
                                 Text(
-                                  'A IDEIA QUE VOCÊ CARREGA MERECE CHEGAR AO MUNDO EM 30 DIAS',
+                                  'A IDEIA QUE VOCÊ\nCARREGA MERECE\nCHEGAR AO MUNDO\nEM 30 DIAS',
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 28,
+                                    fontSize: 36,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.white,
-                                    height: 1.2,
+                                    height: 1.15,
                                     letterSpacing: 0,
                                     shadows: [
                                       Shadow(
@@ -180,10 +182,7 @@ class HomeScreen extends StatelessWidget {
                                 
                                 // Badge de serviços mais sutil
                                 Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 16, 
-                                    vertical: 8
-                                  ),
+                                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                                   decoration: BoxDecoration(
                                     color: Colors.white.withOpacity(0.05),
                                     borderRadius: BorderRadius.circular(30),
@@ -195,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                                   child: Text(
                                     'Consultoria estratégica + desenvolvimento de software',
                                     style: GoogleFonts.montserrat(
-                                      fontSize: 12,
+                                      fontSize: 18,
                                       color: Colors.white.withOpacity(0.9),
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 0.2,
@@ -206,11 +205,12 @@ class HomeScreen extends StatelessWidget {
                                 
                                 // Descrição adicional refinada
                                 Container(
-                                  width: double.infinity,
+                                  width: maxWidth * 0.85,
                                   child: Text(
                                     'Chega de só imaginar. A Start30 te ajuda a transformar sua ideia em um negócio digital validado, pronto para o mercado.',
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
-                                      fontSize: 14,
+                                      fontSize: 20,
                                       color: Colors.white.withOpacity(0.7),
                                       height: 1.6,
                                       letterSpacing: 0.1,
@@ -218,7 +218,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 28),
+                                const SizedBox(height: 50),
                                 
                                 // Botão CTA mais compacto e elegante
                                 Center(
@@ -234,8 +234,8 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    width: 180,
-                                    height: 48,
+                                    width: 240,
+                                    height: 52,
                                     child: ElevatedButton(
                                       onPressed: () {
                                         Navigator.pushNamed(context, '/register');
@@ -256,7 +256,7 @@ class HomeScreen extends StatelessWidget {
                                       child: Text(
                                         'Lançar sua ideia',
                                         style: GoogleFonts.montserrat(
-                                          fontSize: 15,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 0.3,
                                         ),
@@ -272,6 +272,7 @@ class HomeScreen extends StatelessWidget {
                           child: Container(
                             constraints: BoxConstraints(maxWidth: maxWidth),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const SizedBox(height: 60),
@@ -279,23 +280,23 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   'TRANSFORMANDO IDEIAS',
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 14,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white.withOpacity(0.75),
                                     letterSpacing: 2.0,
                                   ),
                                 ),
-                                const SizedBox(height: 32),
+                                const SizedBox(height: 20),
                                 
                                 // Título principal em grande destaque
                                 Text(
                                   'A IDEIA QUE VOCÊ CARREGA\nMERECE CHEGAR AO MUNDO\nEM 30 DIAS',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 58,
+                                    fontSize: 72,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.white,
-                                    height: 1.2,
+                                    height: 1.15,
                                     letterSpacing: -0.5,
                                     shadows: [
                                       Shadow(
@@ -306,11 +307,11 @@ class HomeScreen extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 40),
+                                const SizedBox(height: 30),
                                 
                                 // Badge de serviços mais sutil
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                                   decoration: BoxDecoration(
                                     color: Colors.white.withOpacity(0.05),
                                     borderRadius: BorderRadius.circular(30),
@@ -322,7 +323,7 @@ class HomeScreen extends StatelessWidget {
                                   child: Text(
                                     'Consultoria estratégica + desenvolvimento de software',
                                     style: GoogleFonts.montserrat(
-                                      fontSize: 16,
+                                      fontSize: 18,
                                       color: Colors.white.withOpacity(0.9),
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 0.2,
@@ -333,12 +334,12 @@ class HomeScreen extends StatelessWidget {
                                 
                                 // Descrição adicional refinada
                                 Container(
-                                  width: maxWidth * 0.55,
+                                  width: maxWidth * 0.85,
                                   child: Text(
                                     'Chega de só imaginar. A Start30 te ajuda a transformar sua ideia em um negócio digital validado, pronto para o mercado.',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
-                                      fontSize: 17,
+                                      fontSize: 20,
                                       color: Colors.white.withOpacity(0.7),
                                       height: 1.6,
                                       letterSpacing: 0.1,
@@ -346,20 +347,22 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 40),
+                                const SizedBox(height: 36),
                                 
                                 // Botão CTA
                                 SizedBox(
-                                  width: 340,
+                                  width: 480,
+                                  height: 60,
                                   child: StripeButton(
                                     text: 'Lançar sua ideia',
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/register');
                                     },
                                     isSecondary: true,
-                                    width: 340,
+                                    width: 480,
                                   ),
                                 ),
+                                const SizedBox(height: 20),
                               ],
                             ),
                           ),
