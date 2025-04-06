@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding,
+                horizontal: isMobile ? 16 : 40,
                 vertical: isMobile ? 60 : 120,
               ),
               decoration: BoxDecoration(
@@ -97,81 +97,274 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Center(
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: maxWidth),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 60),
-                      Text(
-                        'Transformamos sua ideia em um\nnegócio digital rentável em 30 dias',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          fontSize: isMobile ? 34 : 56,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          height: 1.2,
-                          letterSpacing: -0.5,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black.withOpacity(0.5),
-                              blurRadius: 10,
-                              offset: const Offset(0, 5),
-                            ),
+              child: Stack(
+                children: [
+                  // Elemento decorativo sutil
+                  Positioned(
+                    right: isMobile ? -100 : 0,
+                    top: isMobile ? -50 : 50,
+                    child: Container(
+                      width: isMobile ? 200 : 400,
+                      height: isMobile ? 200 : 400,
+                      decoration: BoxDecoration(
+                        gradient: RadialGradient(
+                          colors: [
+                            Colors.white.withOpacity(0.03),
+                            Colors.transparent,
                           ],
+                          radius: 0.8,
                         ),
                       ),
-                      const SizedBox(height: 24),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.05),
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.1),
-                            width: 1,
-                          ),
-                        ),
-                        child: Text(
-                          'Consultoria estratégica + desenvolvimento de software',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(
-                            fontSize: isMobile ? 16 : 18,
-                            color: Colors.white.withOpacity(0.9),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      Container(
-                        constraints: BoxConstraints(maxWidth: 750),
-                        child: Text(
-                          'para validar e lançar seu negócio com agilidade e eficiência',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(
-                            fontSize: isMobile ? 16 : 18,
-                            color: Colors.white70,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 48),
-                      SizedBox(
-                        width: isMobile ? double.infinity : 340,
-                        child: StripeButton(
-                          text: 'Agendar diagnóstico gratuito',
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/register');
-                          },
-                          isSecondary: true,
-                          width: isMobile ? double.infinity : 340,
-                        ),
-                      ),
-                      const SizedBox(height: 60),
-                    ],
+                    ),
                   ),
-                ),
+                  // Elemento decorativo sutil 2
+                  Positioned(
+                    left: isMobile ? -150 : -100,
+                    bottom: isMobile ? -100 : -50,
+                    child: Container(
+                      width: isMobile ? 250 : 350,
+                      height: isMobile ? 250 : 350,
+                      decoration: BoxDecoration(
+                        gradient: RadialGradient(
+                          colors: [
+                            Colors.white.withOpacity(0.02),
+                            Colors.transparent,
+                          ],
+                          radius: 0.7,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Conteúdo principal
+                  isMobile
+                      ? Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            width: double.infinity,
+                            constraints: BoxConstraints(maxWidth: maxWidth),
+                            padding: EdgeInsets.only(left: 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Subtítulo com mais refinamento tipográfico
+                                Text(
+                                  'TRANSFORMANDO IDEIAS',
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white.withOpacity(0.75),
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                
+                                // Título principal com tipografia mais elegante
+                                Text(
+                                  'A IDEIA QUE VOCÊ CARREGA MERECE CHEGAR AO MUNDO EM 30 DIAS',
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                    height: 1.2,
+                                    letterSpacing: 0,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        blurRadius: 10,
+                                        offset: const Offset(0, 4),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 24),
+                                
+                                // Badge de serviços mais sutil
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 16, 
+                                    vertical: 8
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.05),
+                                    borderRadius: BorderRadius.circular(30),
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(0.1),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Consultoria estratégica + desenvolvimento de software',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      color: Colors.white.withOpacity(0.9),
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.2,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 16),
+                                
+                                // Descrição adicional refinada
+                                Container(
+                                  width: double.infinity,
+                                  child: Text(
+                                    'Chega de só imaginar. A Start30 te ajuda a transformar sua ideia em um negócio digital validado, pronto para o mercado.',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.white.withOpacity(0.7),
+                                      height: 1.6,
+                                      letterSpacing: 0.1,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 28),
+                                
+                                // Botão CTA mais compacto e elegante
+                                Center(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.white.withOpacity(0.03),
+                                          blurRadius: 15,
+                                          spreadRadius: 0,
+                                          offset: const Offset(0, 4),
+                                        ),
+                                      ],
+                                    ),
+                                    width: 180,
+                                    height: 48,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(context, '/register');
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color(0xFF080808),
+                                        foregroundColor: Colors.white,
+                                        elevation: 0,
+                                        padding: EdgeInsets.zero,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          side: BorderSide(
+                                            color: Colors.white.withOpacity(0.8),
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        'Lançar sua ideia',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600,
+                                          letterSpacing: 0.3,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : Center(
+                          child: Container(
+                            constraints: BoxConstraints(maxWidth: maxWidth),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 60),
+                                // Subtítulo TRANSFORME SUA IDEIA EM 30 DIAS como título principal
+                                Text(
+                                  'TRANSFORMANDO IDEIAS',
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white.withOpacity(0.75),
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
+                                const SizedBox(height: 32),
+                                
+                                // Título principal em grande destaque
+                                Text(
+                                  'A IDEIA QUE VOCÊ CARREGA\nMERECE CHEGAR AO MUNDO\nEM 30 DIAS',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 58,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                    height: 1.2,
+                                    letterSpacing: -0.5,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        blurRadius: 10,
+                                        offset: const Offset(0, 4),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 40),
+                                
+                                // Badge de serviços mais sutil
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.05),
+                                    borderRadius: BorderRadius.circular(30),
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(0.1),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Consultoria estratégica + desenvolvimento de software',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 16,
+                                      color: Colors.white.withOpacity(0.9),
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.2,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                
+                                // Descrição adicional refinada
+                                Container(
+                                  width: maxWidth * 0.55,
+                                  child: Text(
+                                    'Chega de só imaginar. A Start30 te ajuda a transformar sua ideia em um negócio digital validado, pronto para o mercado.',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 17,
+                                      color: Colors.white.withOpacity(0.7),
+                                      height: 1.6,
+                                      letterSpacing: 0.1,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 40),
+                                
+                                // Botão CTA
+                                SizedBox(
+                                  width: 340,
+                                  child: StripeButton(
+                                    text: 'Lançar sua ideia',
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/register');
+                                    },
+                                    isSecondary: true,
+                                    width: 340,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                ],
               ),
             ),
 
@@ -180,7 +373,7 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.symmetric(
                 horizontal: horizontalPadding,
-                vertical: isMobile ? 24 : 32,
+                vertical: isMobile ? 18 : 32,
               ),
               decoration: BoxDecoration(
                 color: AppColors.secondary,
@@ -206,7 +399,7 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(12),
+                        padding: EdgeInsets.all(isMobile ? 8 : 12),
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.2),
                           shape: BoxShape.circle,
@@ -214,16 +407,16 @@ class HomeScreen extends StatelessWidget {
                         child: Icon(
                           Icons.speed_rounded,
                           color: Colors.white,
-                          size: isMobile ? 24 : 32,
+                          size: isMobile ? 20 : 32,
                         ),
                       ),
-                      const SizedBox(width: 16),
+                      SizedBox(width: isMobile ? 12 : 16),
                       Flexible(
                         child: Text(
-                          'Enquanto outros levam meses, nós entregamos seu negócio digital em 30 dias com uma abordagem intensiva e validada.',
+                          'Entregamos seu negócio digital em 30 dias enquanto outros levam meses.',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.montserrat(
-                            fontSize: isMobile ? 14 : 18,
+                            fontSize: isMobile ? 13 : 18,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
@@ -829,7 +1022,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -850,18 +1043,18 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    width: 48,
-                    height: 48,
+                    width: 42,
+                    height: 42,
                     decoration: BoxDecoration(
-                      color: AppColors.secondary,
                       shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.secondary.withOpacity(0.4),
-                          blurRadius: 12,
-                          spreadRadius: 1,
-                        ),
-                      ],
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          AppColors.secondary.withOpacity(0.9),
+                          AppColors.secondary.withOpacity(0.7),
+                        ],
+                      ),
                     ),
                     child: const Center(
                       child: Text(
@@ -869,12 +1062,12 @@ class HomeScreen extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 16,
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 16),
+                  const SizedBox(width: 14),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -882,7 +1075,7 @@ class HomeScreen extends StatelessWidget {
                         'Start30',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -958,12 +1151,16 @@ class HomeScreen extends StatelessWidget {
                         icon: const Icon(Icons.rocket_launch),
                         label: const Text('Começar Agora'),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.secondary,
+                          backgroundColor: const Color(0xFF080808),
                           foregroundColor: Colors.white,
-                          elevation: 4,
-                          shadowColor: AppColors.secondary.withOpacity(0.4),
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(
+                              color: Colors.white,
+                              width: 1.5,
+                            ),
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
                           textStyle: const TextStyle(
@@ -1679,7 +1876,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       scrolledUnderElevation: 0,
-      toolbarHeight: 70,
+      toolbarHeight: isMobile ? 60 : 70,
       flexibleSpace: ClipRRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
@@ -1706,8 +1903,8 @@ class HomeScreen extends StatelessWidget {
       title: Row(
         children: [
           Container(
-            width: 40,
-            height: 40,
+            width: isMobile ? 34 : 40,
+            height: isMobile ? 34 : 40,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -1717,7 +1914,7 @@ class HomeScreen extends StatelessWidget {
                   AppColors.secondary.withOpacity(0.7),
                 ],
               ),
-              borderRadius: BorderRadius.circular(10),
+              shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
                   color: AppColors.secondary.withOpacity(0.2),
@@ -1727,25 +1924,25 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            child: const Center(
+            child: Center(
               child: Text(
                 'S30',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                  fontSize: isMobile ? 14 : 15,
                 ),
               ),
             ),
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: isMobile ? 8 : 10),
           Flexible(
             child: Text(
               'Start30',
               style: TextStyle(
                 color: Colors.white.withOpacity(0.95),
                 fontWeight: FontWeight.w600,
-                fontSize: 20,
+                fontSize: isMobile ? 18 : 20,
               ),
               overflow: TextOverflow.ellipsis,
             ),
