@@ -58,7 +58,7 @@ class StripeTextField extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white70
+                      ? Colors.white
                       : AppColors.textSecondary,
                 ),
           ),
@@ -79,7 +79,11 @@ class StripeTextField extends StatelessWidget {
           onTap: onTap,
           autofocus: autofocus,
           readOnly: readOnly,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : AppColors.textPrimary,
+              ),
           decoration: InputDecoration(
             hintText: hintText,
             prefixIcon: prefixIcon,
@@ -124,7 +128,7 @@ class StripeTextField extends StatelessWidget {
             ),
             hintStyle: TextStyle(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white38
+                  ? Colors.white60
                   : AppColors.textLight,
             ),
           ),

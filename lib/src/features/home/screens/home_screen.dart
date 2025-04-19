@@ -150,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 // Subtítulo com mais refinamento tipográfico
                                 Text(
-                                  'TRANSFORMANDO IDEIAS',
+                                  'DO RASCUNHO À REALIDADE',
                                   style: GoogleFonts.montserrat(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
@@ -162,7 +162,7 @@ class HomeScreen extends StatelessWidget {
                                 
                                 // Título principal com tipografia mais elegante
                                 Text(
-                                  'A IDEIA QUE VOCÊ\nCARREGA MERECE\nCHEGAR AO MUNDO\nEM 30 DIAS',
+                                  'VALIDE SUA IDEIA COM UM MVP EM 30 DIAS — E CONSTRUA UMA BASE SÓLIDA PARA ESCALAR',
                                   style: GoogleFonts.montserrat(
                                     fontSize: 36,
                                     fontWeight: FontWeight.w800,
@@ -207,7 +207,7 @@ class HomeScreen extends StatelessWidget {
                                 Container(
                                   width: maxWidth * 0.85,
                                   child: Text(
-                                    'Chega de só imaginar. A Start30 te ajuda a transformar sua ideia em um negócio digital validado, pronto para o mercado.',
+                                    'Você tem uma ideia. A gente tem o caminho. Comece com um MVP em 30 dias, evolua com um projeto mais robusto e escale com segurança. A Start30 é sua parceira de produto, do zero à tração.',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       fontSize: 20,
@@ -238,7 +238,7 @@ class HomeScreen extends StatelessWidget {
                                     height: 52,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(context, '/register');
+                                        Navigator.pushNamed(context, '/idea_form');
                                       },
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color(0xFF080808),
@@ -254,7 +254,7 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                       child: Text(
-                                        'Lançar sua ideia',
+                                        'Lançar seu MVP',
                                         style: GoogleFonts.montserrat(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
@@ -278,7 +278,7 @@ class HomeScreen extends StatelessWidget {
                                 const SizedBox(height: 60),
                                 // Subtítulo TRANSFORME SUA IDEIA EM 30 DIAS como título principal
                                 Text(
-                                  'TRANSFORMANDO IDEIAS',
+                                  'DO RASCUNHO À REALIDADE',
                                   style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
@@ -290,7 +290,7 @@ class HomeScreen extends StatelessWidget {
                                 
                                 // Título principal em grande destaque
                                 Text(
-                                  'A IDEIA QUE VOCÊ CARREGA\nMERECE CHEGAR AO MUNDO\nEM 30 DIAS',
+                                  'VALIDE SUA IDEIA COM UM MVP EM 30 DIAS — E CONSTRUA UMA BASE SÓLIDA PARA ESCALAR',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.montserrat(
                                     fontSize: 72,
@@ -336,7 +336,7 @@ class HomeScreen extends StatelessWidget {
                                 Container(
                                   width: maxWidth * 0.85,
                                   child: Text(
-                                    'Chega de só imaginar. A Start30 te ajuda a transformar sua ideia em um negócio digital validado, pronto para o mercado.',
+                                    'Você tem uma ideia. A gente tem o caminho. Comece com um MVP em 30 dias, evolua com um projeto mais robusto e escale com segurança. A Start30 é sua parceira de produto, do zero à tração.',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       fontSize: 20,
@@ -354,9 +354,9 @@ class HomeScreen extends StatelessWidget {
                                   width: 480,
                                   height: 60,
                                   child: StripeButton(
-                                    text: 'Lançar sua ideia',
+                                    text: 'Lançar seu MVP',
                                     onPressed: () {
-                                      Navigator.pushNamed(context, '/register');
+                                      Navigator.pushNamed(context, '/idea_form');
                                     },
                                     isSecondary: true,
                                     width: 480,
@@ -446,7 +446,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Como funciona',
+                        'Do MVP à Escala: construímos junto com você',
                         style: GoogleFonts.poppins(
                           fontSize: isMobile ? 28 : 36,
                           fontWeight: FontWeight.bold,
@@ -456,7 +456,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Nosso processo em 3 etapas simples para transformar sua ideia em realidade',
+                        'Uma jornada pensada para validar, evoluir e escalar seu produto digital',
                         style: GoogleFonts.poppins(
                           fontSize: isMobile ? 16 : 18,
                           color: Colors.white70,
@@ -471,22 +471,22 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           _buildStepCard(
                             icon: Icons.lightbulb_outline,
-                            title: 'Validação',
-                            description: 'Validamos sua ideia com pesquisas de mercado e definição de público-alvo.',
+                            title: 'MVP (30 dias)',
+                            description: 'Tirar sua ideia do papel e testar no mercado. Entregamos um MVP funcional com funcionalidades essenciais, pronto para validar com usuários reais. Ideal para empreendedores em fase inicial, startups, validação de modelo de negócio.',
                             step: '01',
                             isMobile: isMobile,
                           ),
                           _buildStepCard(
                             icon: Icons.code,
-                            title: 'Desenvolvimento',
-                            description: 'Criamos um MVP funcional com foco nas funcionalidades essenciais.',
+                            title: 'Produto Intermediário (3 meses)',
+                            description: 'Consolidar as funcionalidades principais com melhorias e automações iniciais. Entregamos infraestrutura aprimorada, melhorias baseadas no uso real do MVP. Ideal para quem já validou a ideia e quer melhorar experiência e operação.',
                             step: '02',
                             isMobile: isMobile,
                           ),
                           _buildStepCard(
                             icon: Icons.rocket_launch,
-                            title: 'Lançamento',
-                            description: 'Preparamos sua estratégia de lançamento e aquisição de clientes.',
+                            title: 'Projeto Escalável (6 meses)',
+                            description: 'Preparar seu produto para crescer com segurança. Entregamos arquitetura de escala, novos módulos, performance otimizada, preparação para rodada de investimento. Ideal para startups em tração ou crescimento, SaaS, marketplaces e produtos com alta demanda.',
                             step: '03',
                             isMobile: isMobile,
                           ),
@@ -658,46 +658,49 @@ class HomeScreen extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         children: [
                           _buildPlanCard(
-                            title: 'Validação',
-                            price: 'R\$ 3.900',
+                            title: 'MVP em 30 dias',
+                            price: 'Personalizado',
                             description: 'Ideal para testar sua ideia no mercado',
                             features: [
                               'Análise de mercado',
                               'Definição de público-alvo',
                               'Protótipo simples',
                               'Testes com usuários reais',
-                              '15 dias de duração',
+                              'MVP funcional para validação',
                             ],
                             recommended: false,
                             isMobile: isMobile,
+                            planType: 'mvp',
                           ),
                           _buildPlanCard(
-                            title: 'MVP Completo',
-                            price: 'R\$ 9.900',
-                            description: 'Nossa solução mais popular para lançar seu produto',
+                            title: 'Produto Intermediário',
+                            price: 'Personalizado',
+                            description: 'Nossa solução mais popular para melhorar seu MVP',
                             features: [
-                              'Tudo do plano Validação',
-                              'MVP funcional',
-                              'Identidade visual',
-                              'Estratégia de lançamento',
-                              '30 dias de duração',
+                              'Consolidação de funcionalidades',
+                              'Melhorias baseadas no uso real',
+                              'Automações iniciais',
+                              'Infraestrutura aprimorada',
+                              'Melhor experiência para o usuário',
                             ],
                             recommended: true,
                             isMobile: isMobile,
+                            planType: 'intermediario',
                           ),
                           _buildPlanCard(
-                            title: 'Aceleração',
-                            price: 'R\$ 15.900',
-                            description: 'Para quem busca crescimento rápido',
+                            title: 'Projeto Escalável',
+                            price: 'Personalizado',
+                            description: 'Para quem busca crescimento com segurança',
                             features: [
-                              'Tudo do plano MVP Completo',
-                              'Estratégia de aquisição',
-                              'Integração com APIs',
-                              'Suporte dedicado',
-                              '45 dias de duração',
+                              'Arquitetura de escala',
+                              'Novos módulos e funcionalidades',
+                              'Performance otimizada',
+                              'Preparação para investimento',
+                              'Suporte para alta demanda',
                             ],
                             recommended: false,
                             isMobile: isMobile,
+                            planType: 'escalavel',
                           ),
                         ],
                       ),
@@ -1107,6 +1110,48 @@ class HomeScreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     isHighlighted: true,
+                  ),
+                  // Item CodeGrana com destaque especial
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColors.secondary.withOpacity(0.25),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: AppColors.secondary.withOpacity(0.5), width: 1),
+                    ),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.pushNamed(context, '/code-grana');
+                        },
+                        splashColor: AppColors.secondary.withOpacity(0.2),
+                        highlightColor: AppColors.secondary.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(8),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.shopping_cart_outlined,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              const SizedBox(width: 16),
+                              Text(
+                                'CodeGrana',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   _buildDrawerItem(
                     context: context,
@@ -1673,6 +1718,7 @@ class HomeScreen extends StatelessWidget {
     required List<String> features,
     required bool recommended,
     required bool isMobile,
+    required String planType,
   }) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
@@ -1730,29 +1776,24 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          price,
-                          style: GoogleFonts.poppins(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: AppColors.secondary.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: AppColors.secondary.withOpacity(0.3),
+                          width: 1,
                         ),
-                        const SizedBox(width: 8),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 4),
-                          child: Text(
-                            'à vista',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              color: Colors.white70,
-                            ),
-                          ),
+                      ),
+                      child: Text(
+                        'Valor personalizado para seu projeto',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.secondary,
                         ),
-                      ],
+                      ),
                     ),
                     const SizedBox(height: 16),
                     Text(
@@ -1794,10 +1835,41 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: Builder(
-                        builder: (context) => ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/register');
+                        builder: (context) => ElevatedButton.icon(
+                          onPressed: () async {
+                            // Texto personalizado baseado no tipo de plano
+                            String message = '';
+                            if (planType == 'mvp') {
+                              message = 'Olá! Estou interessado no plano de MVP em 30 dias. Gostaria de mais informações sobre valores e como podemos começar.';
+                            } else if (planType == 'intermediario') {
+                              message = 'Olá! Estou interessado no plano de Produto Intermediário. Já tenho um MVP e gostaria de melhorá-lo.';
+                            } else if (planType == 'escalavel') {
+                              message = 'Olá! Estou interessado no plano de Projeto Escalável. Meu produto já está em operação e preciso preparar para escalar.';
+                            }
+                            
+                            final encodedMessage = Uri.encodeComponent(message);
+                            final whatsappUrl = Uri.parse('https://wa.me/5500000000000?text=$encodedMessage');
+                            try {
+                              if (await url_launcher.canLaunchUrl(whatsappUrl)) {
+                                await url_launcher.launchUrl(whatsappUrl);
+                              } else {
+                                throw 'Não foi possível abrir o WhatsApp';
+                              }
+                            } catch (e) {
+                              // Em caso de erro, mostrar uma mensagem 
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Não foi possível abrir o WhatsApp. Por favor, tente novamente.'),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
                           },
+                          icon: Icon(
+                            FontAwesomeIcons.whatsapp,
+                            color: Colors.white,
+                          ),
+                          label: Text(recommended ? 'Conversar sobre este plano' : 'Falar com consultor'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: recommended ? AppColors.secondary : Colors.white10,
                             foregroundColor: Colors.white,
@@ -1810,7 +1882,6 @@ class HomeScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          child: Text(recommended ? 'Escolher este plano' : 'Selecionar'),
                         ),
                       ),
                     ),
@@ -1954,6 +2025,38 @@ class HomeScreen extends StatelessWidget {
       ),
       actions: [
         if (!isMobile) ...[
+          // Botão CodeGrana (destacado em laranja)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: TextButton.icon(
+              onPressed: () => Navigator.pushNamed(context, '/code-grana'),
+              icon: Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.white.withOpacity(0.95),
+                size: 18,
+              ),
+              label: Text(
+                'CodeGrana',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.95),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all(AppColors.secondary.withOpacity(0.2)),
+                backgroundColor: MaterialStateProperty.all(AppColors.secondary.withOpacity(0.25)),
+                padding: MaterialStateProperty.all(
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                ),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+          ),
           _buildModernNavButton(
             context: context, 
             icon: Icons.lightbulb_outline, 

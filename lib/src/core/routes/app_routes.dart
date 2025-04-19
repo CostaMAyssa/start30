@@ -6,6 +6,8 @@ import '../../features/payment/screens/payment_screen.dart';
 import '../../features/profile/screens/profile_screen.dart';
 import '../../features/about/screens/about_screen.dart';
 import '../../features/plans/models/plan_model.dart';
+import '../../features/idea_qualification/screens/idea_form_screen.dart';
+import '../../features/code_grana/screens/code_grana_screen.dart';
 
 /// Classe que define as rotas do aplicativo
 class AppRoutes {
@@ -32,6 +34,12 @@ class AppRoutes {
 
   /// Rota para a tela sobre
   static const String about = '/about';
+  
+  /// Rota para o formulário de qualificação de ideias
+  static const String ideaForm = '/idea_form';
+  
+  /// Rota para a loja CodeGrana
+  static const String codeGrana = '/code-grana';
   
   /// Gera as rotas do aplicativo
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -75,6 +83,16 @@ class AppRoutes {
       case about:
         return MaterialPageRoute(
           builder: (_) => const AboutScreen(),
+        );
+        
+      case ideaForm:
+        return MaterialPageRoute(
+          builder: (_) => const IdeaFormScreen(),
+        );
+      
+      case codeGrana:
+        return MaterialPageRoute(
+          builder: (_) => const CodeGranaScreen(),
         );
       
       default:
