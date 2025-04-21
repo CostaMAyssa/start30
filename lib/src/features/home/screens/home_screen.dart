@@ -207,7 +207,7 @@ class HomeScreen extends StatelessWidget {
                                 Container(
                                   width: maxWidth * 0.85,
                                   child: Text(
-                                    'Você tem uma ideia. A gente tem o caminho. Comece com um MVP em 30 dias, evolua com um projeto mais robusto e escale com segurança. A Start30 é sua parceira de produto, do zero à tração.',
+                                    'Descubra gratuitamente o potencial do seu negócio digital: avaliamos a viabilidade da sua ideia e o caminho para um MVP em 30 dias.',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       fontSize: 20,
@@ -223,44 +223,15 @@ class HomeScreen extends StatelessWidget {
                                 // Botão CTA mais compacto e elegante
                                 Center(
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.white.withOpacity(0.03),
-                                          blurRadius: 15,
-                                          spreadRadius: 0,
-                                          offset: const Offset(0, 4),
-                                        ),
-                                      ],
-                                    ),
                                     width: 240,
                                     height: 52,
-                                    child: ElevatedButton(
+                                    child: StripeButton(
+                                      text: 'Lançar seu MVP',
                                       onPressed: () {
                                         Navigator.pushNamed(context, '/idea_form');
                                       },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color(0xFF080808),
-                                        foregroundColor: Colors.white,
-                                        elevation: 0,
-                                        padding: EdgeInsets.zero,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                          side: BorderSide(
-                                            color: Colors.white.withOpacity(0.8),
-                                            width: 1.0,
-                                          ),
-                                        ),
-                                      ),
-                                      child: Text(
-                                        'Lançar seu MVP',
-                                        style: GoogleFonts.montserrat(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          letterSpacing: 0.3,
-                                        ),
-                                      ),
+                                      isSecondary: true,
+                                      width: 240,
                                     ),
                                   ),
                                 ),
@@ -336,7 +307,7 @@ class HomeScreen extends StatelessWidget {
                                 Container(
                                   width: maxWidth * 0.85,
                                   child: Text(
-                                    'Você tem uma ideia. A gente tem o caminho. Comece com um MVP em 30 dias, evolua com um projeto mais robusto e escale com segurança. A Start30 é sua parceira de produto, do zero à tração.',
+                                    'Descubra gratuitamente o potencial do seu negócio digital: avaliamos a viabilidade da sua ideia e o caminho para um MVP em 30 dias.',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       fontSize: 20,
@@ -499,7 +470,7 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // Cases de sucesso
-            Container(
+            /* Container(
               padding: EdgeInsets.symmetric(
                 horizontal: horizontalPadding,
                 vertical: isMobile ? 60 : 100,
@@ -617,7 +588,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            ), */
 
             // Planos e preços
             Container(
@@ -815,9 +786,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: 40),
                       StripeButton(
                         text: 'Começar agora',
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/register');
-                        },
+                        onPressed: () => Navigator.pushNamed(context, '/idea_form'),
                         isSecondary: true,
                         width: isMobile ? double.infinity : 250,
                       ),
@@ -1194,7 +1163,7 @@ class HomeScreen extends StatelessWidget {
                       child: ElevatedButton.icon(
                         onPressed: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/register');
+                          Navigator.pushNamed(context, '/idea_form');
                         },
                         icon: const Icon(Icons.rocket_launch),
                         label: const Text('Começar Agora'),
@@ -1294,12 +1263,17 @@ class HomeScreen extends StatelessWidget {
     required String step,
     required bool isMobile,
   }) {
+    // Tamanho fixo para os cards
+    final double cardWidth = isMobile ? double.infinity : 320;
+    final double cardHeight = 380; // Altura fixa para todos os cards
+    
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
         child: Container(
-          width: isMobile ? double.infinity : 300,
+          width: cardWidth,
+          height: cardHeight,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.6),
@@ -1345,12 +1319,16 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
-              Text(
-                description,
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.white70,
-                  height: 1.5,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    description,
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color: Colors.white70,
+                      height: 1.5,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -1540,176 +1518,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Widget para case card
-  Widget _buildCaseCard({
-    required String title,
-    required String description,
-    required String result,
-    required String tag,
-    required bool isMobile,
-  }) {
-    return Container(
-      width: isMobile ? double.infinity : 320,
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A1A1A),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.secondary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              tag,
-              style: GoogleFonts.poppins(
-                color: AppColors.secondary,
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            title,
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            description,
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              color: Colors.white70,
-              height: 1.5,
-            ),
-          ),
-          const SizedBox(height: 16),
-          const Divider(color: Colors.white10),
-          const SizedBox(height: 16),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(
-                Icons.check_circle_outline,
-                color: AppColors.success,
-                size: 24,
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  result,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    height: 1.5,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Widget para card de depoimento com efeito glassmorphism
-  Widget _buildTestimonialCard({
-    required String name,
-    required String role,
-    required String testimonial,
-    required bool isMobile,
-  }) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Container(
-          width: isMobile ? double.infinity : 320,
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.6),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withOpacity(0.1)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(
-                Icons.format_quote,
-                color: AppColors.secondary,
-                size: 32,
-              ),
-              const SizedBox(height: 16),
-              Text(
-                testimonial,
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.white,
-                  height: 1.5,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-              const SizedBox(height: 24),
-              Row(
-                children: [
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: AppColors.secondary.withOpacity(0.1),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(
-                        name.substring(0, 1),
-                        style: GoogleFonts.poppins(
-                          color: AppColors.secondary,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        role,
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   // Widget para card de plano com efeito glassmorphism
   Widget _buildPlanCard({
     required String title,
@@ -1776,26 +1584,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: AppColors.secondary.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: AppColors.secondary.withOpacity(0.3),
-                          width: 1,
-                        ),
-                      ),
-                      child: Text(
-                        'Valor personalizado para seu projeto',
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.secondary,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
                     Text(
                       description,
                       style: GoogleFonts.poppins(
@@ -2081,7 +1869,7 @@ class HomeScreen extends StatelessWidget {
             child: _buildModernActionButton(
               context: context,
               label: 'Começar',
-              onPressed: () => Navigator.pushNamed(context, '/register'),
+              onPressed: () => Navigator.pushNamed(context, '/idea_form'),
             ),
           ),
         ] else ...[
