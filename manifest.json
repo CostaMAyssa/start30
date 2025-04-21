@@ -1,0 +1,35 @@
+{
+    "name": "Start30 - Transformando Ideias em Negócios Digitais",
+    "short_name": "Start30",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FF5722",
+    "theme_color": "#FF5722",
+    "description": "Transformamos ideias em MVPs funcionais em apenas 30 dias.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
