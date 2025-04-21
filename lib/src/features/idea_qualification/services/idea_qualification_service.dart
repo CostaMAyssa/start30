@@ -4,7 +4,7 @@ import '../models/idea_qualification_model.dart';
 /// Serviço responsável por processar e enviar os dados do formulário de qualificação
 class IdeaQualificationService {
   /// Email para onde serão enviados os formulários de qualificação
-  static const String targetEmail = 'statupstart30@gmail.com';
+  static const String targetEmail = 'startupstart30@gmail.com';
 
   /// Envia os dados do formulário para o email configurado
   /// Retorna true se o envio for bem-sucedido
@@ -66,9 +66,9 @@ Enviado automaticamente pelo sistema de qualificação Start30.
     if (qualification.targetAudience.isNotEmpty) score += 15;
     
     // Pontua com base no orçamento
-    if (qualification.budget == 'R\$15.000 - R\$30.000') score += 15;
-    if (qualification.budget == 'R\$30.000 - R\$50.000') score += 20;
-    if (qualification.budget == 'Acima de R\$50.000') score += 25;
+    if (qualification.budget == 'R\$1.500 - R\$3.000') score += 15;
+    if (qualification.budget == 'R\$3.000 - R\$5.000') score += 20;
+    if (qualification.budget == 'Acima de R\$5.000') score += 25;
     
     // Pontua com base no prazo
     if (qualification.timeline == '1-2 meses') score += 20;

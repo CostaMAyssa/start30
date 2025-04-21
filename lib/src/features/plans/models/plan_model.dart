@@ -22,7 +22,7 @@ class PlanModel {
       PlanModel(
         id: 'essential',
         title: 'Plano Essencial',
-        price: '1.997',
+        price: '1.497',
         description: 'Validação de Ideia',
         features: [
           'Pesquisa de mercado simplificada',
@@ -36,7 +36,7 @@ class PlanModel {
       PlanModel(
         id: 'intermediate',
         title: 'Plano Intermediário',
-        price: '3.997',
+        price: '2.997',
         description: 'MVP Funcional',
         features: [
           'Tudo do plano essencial',
@@ -50,7 +50,7 @@ class PlanModel {
       PlanModel(
         id: 'premium',
         title: 'Plano Premium',
-        price: '7.997',
+        price: '4.997',
         description: 'Produto Pronto para Escalar',
         features: [
           'Tudo dos planos anteriores',

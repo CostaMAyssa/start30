@@ -43,10 +43,10 @@ class _IdeaFormScreenState extends State<IdeaFormScreen> {
 
   // Lista de orçamentos
   final List<String> _budgetOptions = [
-    'Até R\$15.000',
-    'R\$15.000 - R\$30.000',
-    'R\$30.000 - R\$50.000',
-    'Acima de R\$50.000',
+    'Até R\$1.500',
+    'R\$1.500 - R\$3.000',
+    'R\$3.000 - R\$5.000',
+    'Acima de R\$5.000',
   ];
 
   // Lista de prazos
